@@ -1,0 +1,55 @@
+  <div id="layoutSidenav_nav">
+    <nav class="sidenav shadow-right sidenav-light">
+      <div class="sidenav-menu">
+        <div class="nav accordion" id="accordionSidenav">
+          <app-sidebar-items
+            [routes]="[
+              { name: 'Ajouter nouveau Patient', path: '/addPatient' },
+              { name: 'Gestion des Patients', path: '/patient/all' }
+            ]"
+          >
+          </app-sidebar-items>
+          <app-sidebar-items
+            groupeName="echantillion"
+            groupeTitle="Echantillion"
+            icon=""
+            [routes]="[
+              { name: 'Nouveau echantillion', path: '/addSample' },
+              { name: 'Gestion des Echantillon', path: '/echantillon/all' }
+            ]"
+          ></app-sidebar-items>
+          <app-sidebar-items
+            groupeName="planification"
+            groupeTitle="Planification"
+            icon=""
+            [routes]="[
+              { name: 'Nouveau Planification', path: '/addPlanification' },
+              { name: 'Gestion des Planification', path: '/planification/all' }
+            ]"
+          ></app-sidebar-items>
+          <app-sidebar-items
+          groupeName="analyse"
+          groupeTitle="Analyse"
+          icon=""
+          [routes]="[
+            { name: 'Ajouter Analyse', path: '/addAnalyse' },
+            { name: 'Gestion des Analyses', path: '/analyse/all' },
+            { name: 'Type des Analyses', path: '/type-analyse' },
+            { name: 'Gestion des tests', path: '/gestion-tests' }
+          ]"
+        ></app-sidebar-items>
+        <app-sidebar-items
+        groupeName="utilisateur"
+        groupeTitle="Utilisateur"
+        icon=""
+        [routes]="[
+          { name: 'Ajouter Utilisateur', path: '/addUser' },
+          { name: 'Gestion des Utilisateurs', path: '/user/all' }
+        ]"
+      ></app-sidebar-items>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
