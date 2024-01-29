@@ -1,0 +1,53 @@
+<div class="container-fluid mt-n10">
+  <div class="card mb-4">
+    <div class="card-header">Editer un utilisateur</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container mt-4">
+
+            <form [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()" >
+              <div class="form-group ">
+                <label for="nom" >Nom :</label>
+                <input  type="text" class="form-control" formControlName="nom"  id="nom" required>
+              </div>
+              <div class="form-group ">
+                <label for="prenom" >Prenon</label>
+                <input type="text" class="form-control" formControlName="prenom"  id="prenom" required>
+              </div>
+              <div *ngIf="nameError" class="text-danger">{{nameError}}</div>
+              <div class="form-group ">
+                <label >adresse</label>
+                <input type="text" class="form-control" formControlName="adresse"  id="adresse" required>
+              </div>
+              <div class="form-group ">
+                <label >telephone</label>
+                <input type="text" class="form-control" formControlName="telephone" required>
+              </div>
+              <div class ="form-group " >
+                <label for="UserRole">Role :</label>
+                <select id="UserRole" formControlName="UserRole" class="custom-select">
+                  <option value="" disabled selected>Sélectionnez le role</option>
+                  <option value="RESPONSABLE"></option>
+                  <option value="TECHNICIEN">TECHNICIEN</option>
+                </select>
+              </div>
+              <div class="form-group ">
+                <label for="userName" >userName</label>
+                <input type="text" class="form-control"  id="userName" formControlName="userName" required>
+              </div>
+              <div class="form-group ">
+                <label for="password" >password</label>
+                <input type="text" class="form-control" id="password" formControlName="password" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary" >Ajouter </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,1 +1,43 @@
-<p>all-patients works!</p>
+
+<div class="container-fluid mt-n10">
+  <div class="card mb-4">
+    <div class="card-header">Editer un Patient</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container mt-4">
+            <form [formGroup]="searchForm">
+            </form>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Id</th><th>Nom</th><th>Prenom</th><th>Adresse</th><th>Telephone</th><th>sexe</th><th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.prenom }}</td>
+          <td>{{ patient.adresse }}</td>
+          <td>{{ patient.telephone }}</td>
+          <td>{{ patient.sexe }}</td>
+
+          <td>
+            <a [routerLink]="'/patient/update/' + patient.id" class="btn btn-secoondary btn-sm mr-2" title="Modifier">
+              <i class="fa fa-pencil-alt"></i>
+            </a>
+            <button (click)="confirmAndDelete(patient)"  class="btn btn-outline-danger btn-sm" title="Supprimer">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
