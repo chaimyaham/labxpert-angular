@@ -17,7 +17,6 @@ import { ListEchantillonComponent } from './components/echantillon/list-echantil
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EchantillonService } from '../app/services/echantillon.service';
-import { HttpClientModule } from '@angular/common/http';
 
 import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
 import { AddFournisseurComponent } from './components/fournisseur/add-fournisseur/add-fournisseur.component';
@@ -50,23 +49,20 @@ import { UpdateReactifComponent } from './components/reactif/update-reactif/upda
     ReactifComponent,
     AddReactifComponent,
     UpdateReactifComponent,
-  
+
 
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
-
-    BsDatepickerModule.forRoot(),
-    NgbModule,
-    HttpClientModule
-  ],
-  providers: [EchantillonService],
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule,FormsModule
-  
+    CommonModule,FormsModule,
+    BsDatepickerModule.forRoot(),
+
   ],
+
   providers: [DatePipe],
 
   bootstrap: [AppComponent]

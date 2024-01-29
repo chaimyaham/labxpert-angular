@@ -3,10 +3,11 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { EchantillonService } from './echantillon.service';
+
 import { Echantillon } from 'src/app/models/echantillon.interface';
 import { ReactifAnalyse } from 'src/app/models/reactifAnalyses.interface';
 import 'jasmine';
+import { EchantillonService } from './echantillon.service';
 declare var done: Function;
 describe('EchantillonService', () => {
   let apiUrl = 'http://localhost:8088/api/v1/echantillons';
