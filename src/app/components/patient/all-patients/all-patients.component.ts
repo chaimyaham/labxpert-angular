@@ -14,15 +14,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class AllPatientsComponent implements OnInit {
   patients!: Patient[]
   searchForm!: FormGroup;
-  patientUpdate={
-    id:"",
-    nom:"",
-    prenom:"",
-    adresse:"",
-    telephone:"",
-    sexe:"",
-
-  }
 
   constructor(private patientService: PatientService, private fb: FormBuilder) {
   }
@@ -30,7 +21,7 @@ export class AllPatientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll()
-    this.initForm()
+
 
   }
 
@@ -42,40 +33,33 @@ export class AllPatientsComponent implements OnInit {
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-    );
+    )
 
 
-  };
-  initForm() {
-    this.searchForm = this.fb.group({
-      rechercher: ['', Validators.required]
-    });
   }
-  deletePatient(id: number) {
-    this.patientService.deleteClient(id).subscribe(
+
+
+  confirmAndDelete(patient:Patient): void {
+    const confirmDelete = window.confirm('Voulez-vous vraiment supprimer ce patient ?');
+
+    if (confirmDelete) {
+      this.deletePatient(patient);
+    }
+  }
+  deletePatient(patient:Patient){
+    let index=this.patients.indexOf(patient);
+    this.patientService.deletePatient(patient.id).subscribe(
       () => {
-        // Supprimez le patient du tableau après la réussite de la requête de suppression
-        this.patients = this.patients.filter(patient => patient.id !== id);
+        console.log('paatient supprime avec succes');
+        this.patients.splice(index,1)
       },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+      (error) => {
+        console.error('Erreur lors de la suppression du fournisseur', error);
       }
-    );
-  }
-  updatePatient(id:number,patient: Patient) {
-    this.patientService.update(id, patient).subscribe(
-      (updatedPatient: Patient) => {
-        const index = this.patients.indexOf(patient);
-        if (index !== -1) {
-          this.patients[index] = updatedPatient;
-        }
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+    )
 
   }
+
 
 
 }

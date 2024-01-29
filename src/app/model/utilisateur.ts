@@ -4,7 +4,7 @@ export interface Utilisateur{
   prenom:string;
   adresse:string;
   telephone:string;
-  role:string;
+  UserRole:string;
   userName:string;
   password:string;
 

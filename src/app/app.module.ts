@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {PatientService} from "./services/patient.service";
 
 import { AddUtilisateurComponent } from './components/utilitateur/add-utilisateur/add-utilisateur.component';
+import { UpdatePatientComponent } from './components/patient/update-patient/update-patient.component';
 
 
 
@@ -27,6 +28,7 @@ import { AddUtilisateurComponent } from './components/utilitateur/add-utilisateu
     AddPatientComponent,
     AllPatientsComponent,
     AddUtilisateurComponent,
+    UpdatePatientComponent,
   ],
   imports: [
     BrowserModule,
