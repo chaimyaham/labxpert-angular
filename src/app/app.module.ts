@@ -9,6 +9,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarItemsComponent } from './components/sidebar/sidebar-items/sidebar-items.component';
 import { AddPatientComponent } from './components/patient/add-patient/add-patient.component';
 import { AllPatientsComponent } from './components/patient/all-patients/all-patients.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {PatientService} from "./services/patient.service";
+
+import { AddUtilisateurComponent } from './components/utilitateur/add-utilisateur/add-utilisateur.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,13 +25,17 @@ import { AllPatientsComponent } from './components/patient/all-patients/all-pati
     SidebarComponent,
     SidebarItemsComponent,
     AddPatientComponent,
-    AllPatientsComponent
+    AllPatientsComponent,
+    AddUtilisateurComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

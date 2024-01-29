@@ -1,1 +1,44 @@
-<p>add-patient works!</p>
+<div class="container-fluid mt-10" >
+<div class="card mb-4">
+  <div class="card-header">ajouter patient</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="container mt-4">
+
+          <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" >
+           <div class="form-group ">
+              <label for="nom" >Nom :</label>
+              <input  type="text" class="form-control" formControlName="nom"  id="nom" required>
+           </div>
+          <div class="form-group ">
+              <label for="prenom" >Prenon</label>
+              <input type="text" class="form-control" formControlName="prenom"  id="prenom" required>
+         </div>
+            <div *ngIf="nameError" class="text-danger">{{nameError}}</div>
+      <div class="form-group ">
+        <label >adresse</label>
+        <input type="text" class="form-control" formControlName="adresse"  id="adresse" required>
+      </div>
+      <div class="form-group ">
+        <label >telephone</label>
+        <input type="text" class="form-control" formControlName="telephone" required>
+      </div>
+      <div class ="form-group " >
+        <label for="sexe">Sexe :</label>
+        <select id="sexe" formControlName="sexe" class="custom-select">
+          <option value="" disabled selected>Sélectionnez le sexe</option>
+          <option value="MALE">MALE</option>
+          <option value="FEMALE">FEMALE</option>
+        </select>
+        </div>
+
+    <button type="submit" class="btn btn-primary" >Ajouter </button>
+
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
