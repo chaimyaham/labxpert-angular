@@ -14,8 +14,8 @@ import { AddAnalyseComponent } from './components/analyse/add-analyse/add-analys
 import { AllAnalyseComponent } from './components/analyse/all-analyse/all-analyse.component';
 import { AddEchantillonComponent } from './components/echantillon/add-echantillon/add-echantillon.component';
 import { ListEchantillonComponent } from './components/echantillon/list-echantillon/list-echantillon.component';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EchantillonService } from '../app/services/echantillon.service';
 
 import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
@@ -59,7 +59,7 @@ import { UpdateReactifComponent } from './components/reactif/update-reactif/upda
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,FormsModule,
-    BsDatepickerModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
 
   ],
 
