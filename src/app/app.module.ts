@@ -9,6 +9,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarItemsComponent } from './components/sidebar/sidebar-items/sidebar-items.component';
 import { AddPatientComponent } from './components/patient/add-patient/add-patient.component';
 import { AllPatientsComponent } from './components/patient/all-patients/all-patients.component';
+import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
+import { AddFournisseurComponent } from './components/fournisseur/add-fournisseur/add-fournisseur.component';
+import { UpdateFournisseurComponent } from './components/fournisseur/update-fournisseur/update-fournisseur.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactifComponent } from './components/reactif/reactif.component';
+import { AddReactifComponent } from './components/reactif/add-reactif/add-reactif.component';
+import { CommonModule, DatePipe } from '@angular/common';
+import { UpdateReactifComponent } from './components/reactif/update-reactif/update-reactif.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,13 +29,24 @@ import { AllPatientsComponent } from './components/patient/all-patients/all-pati
     SidebarComponent,
     SidebarItemsComponent,
     AddPatientComponent,
-    AllPatientsComponent
+    AllPatientsComponent,
+    FournisseurComponent,
+    AddFournisseurComponent,
+    UpdateFournisseurComponent,
+    ReactifComponent,
+    AddReactifComponent,
+    UpdateReactifComponent,
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    CommonModule,FormsModule
+  
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
