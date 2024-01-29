@@ -8,6 +8,8 @@ import {Reactif} from "../../../models/reactif";
 import {ReactifService} from "../../../services/reactif.service";
 import {DatePipe} from "@angular/common";
 import {ReactifAnalyse} from "../../../models/reactifAnalyses.interface";
+import {Echantillon} from "../../../models/echantillon.interface";
+import {EchantillonRequest} from "../../../models/echantillonRequest";
 
 
 @Component({
@@ -19,15 +21,18 @@ import {ReactifAnalyse} from "../../../models/reactifAnalyses.interface";
 export class AddEchantillonComponent implements OnInit {
   echantillonForm!: FormGroup;
   reactifs: Reactif[] = [];
-  reactifAnalyse: ReactifAnalyse[]=[]
+  reactifAnalyse: ReactifAnalyse[] = []
   nameError: string | null = null;
   errorMessage: string = '';
+  selectedReactifId: number | null | undefined;
+  selectedReactifName: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private echantillonService: EchantillonService,
-    private reactifService : ReactifService,
+    private reactifService: ReactifService,
     private router: Router,
-    private datePipe : DatePipe
+    private datePipe: DatePipe
   ) {
   }
 
@@ -35,10 +40,10 @@ export class AddEchantillonComponent implements OnInit {
   ngOnInit(): void {
 
     this.reactifService.getAllReactifs().subscribe(
-      data =>{
+      data => {
         this.reactifs = data;
       },
-      error =>{
+      error => {
         console.log(error);
       }
     )
@@ -48,61 +53,83 @@ export class AddEchantillonComponent implements OnInit {
   initForm(): void {
     this.echantillonForm = this.formBuilder.group({
       nom: ['', Validators.required],
-      patientId:[null,Validators.required],
-      utilisateurId:[null,Validators.required],
-      reactifId:[null,Validators.required],
-      dateDeReception : ['',Validators.required],
+      patientId: [null, Validators.required],
+      utilisateurId: [null, Validators.required],
+      reactifId: [null, Validators.required],
+      dateDeReception: ['', Validators.required],
       quantite: [1, [Validators.required, Validators.min(1)]],
     });
   }
 
   onSubmit(): void {
+    const formData = this.echantillonForm.value;
+    const dateDeReception = this.datePipe.transform(formData.dateDeReception, 'yyyy-MM-ddTHH:mm:ss');
+    let echantillonRequest: EchantillonRequest;
+    echantillonRequest = {
+      utilisateurId: formData.utilisateurId,
+      patientId: formData.patientId,
+      dateDeReception: dateDeReception,
+      reactifAnalyses: this.reactifAnalyse,
 
-    if (this.echantillonForm.valid) {
-      const formData = this.echantillonForm.value;
-      this.echantillonService.createEchantillon(formData).subscribe(
-        (response) => {
-          console.log("Donnees des echantillons envoyer avec success", response);
-          this.router.navigate(['supplier/all']);
-        },
-        (error) => {
-          console.error('Erreur lors de envoi des données au backend', error);
-          if (error.status === 400) {
-            this.nameError = 'Le nom du echantillon existe déjà. Veuillez en choisir un autre.';
-          } else {
-            this.nameError = 'Une erreur s\'est produite lors de l\'ajout du echantillons.';
-          }
-
+    };
+    console.log(echantillonRequest);
+    this.echantillonService.createEchantillon(echantillonRequest).subscribe(
+      (response) => {
+        console.log("Donnees des echantillons envoyer avec success", response);
+        this.router.navigate(['echantillon/all']);
+      },
+      (error) => {
+        console.error('Erreur lors de envoi des données au backend', error);
+        if (error.status === 400) {
+          this.nameError = 'Le nom du echantillon existe déjà. Veuillez en choisir un autre.';
+        } else {
+          this.nameError = 'Une erreur s\'est produite lors de l\'ajout du echantillons.';
         }
-      )
 
+      }
+    )
+
+
+  }
+
+  getReactifNom(reactifId: number): string {
+    // Utilisez parseInt pour vous assurer que reactifId est de type number
+    let reactif = this.reactifs.find(reactif => reactif.idReactif === parseInt(reactifId.toString()));
+
+    // Vérifiez si reactif est défini
+    if (reactif) {
+      return reactif.nom;
+    } else {
+      this.errorMessage = "Réactif non trouvé !"
+      return '';
     }
   }
-  getReactifNom(reactifId: number): string {
-    const reactif = this.reactifs.find(r => r.idReactif === reactifId);
-    return reactif ? reactif.nom : '';
+
+
+  creatReactifsList() {
+    const reactifId = this.echantillonForm.get('reactifId')?.value;
+    console.log(`reactif Id ${reactifId}`);
+    if (!reactifId) {
+      return;
+    }
+    if (this.reactifAnalyse.find(reactif => reactif.reactifIdReactif === reactifId)) {
+      this.errorMessage = "Ce réactif a déjà été sélectionné. Veuillez en choisir un autre."
+      return;
+    }
+    const quantite = this.echantillonForm.get('quantite')?.value;
+    // Réinitialisez seulement les champs 'reactifId' et 'quantite'
+    this.echantillonForm.get('reactifId')?.reset();
+    this.echantillonForm.get('quantite')?.reset();
+
+
+    const newReactif: ReactifAnalyse = {
+      id: 0,
+      reactifIdReactif: reactifId,
+      quantite: quantite,
+    };
+    this.reactifAnalyse.push(newReactif);
+
   }
-  creatReactifsList(){
 
-      const reactifId = this.echantillonForm.get('reactifId')?.value;
-      if (!reactifId){
-        return;
-      }
-      const quantite = this.echantillonForm.get('quantite')?.value;
-      // Réinitialisez seulement les champs 'reactifId' et 'quantite'
-      this.echantillonForm.get('reactifId')?.reset();
-      this.echantillonForm.get('quantite')?.reset();
-
-      console.log("reactif id", reactifId)
-      console.log("quantite", quantite)
-      const newReactif: ReactifAnalyse = {
-        id :0,
-        reactifIdReactif: reactifId,
-        quantite: quantite,
-      };
-
-      this.reactifAnalyse.push(newReactif);
-
-  }
 
 }
