@@ -3,7 +3,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "allowSyntheticDefaultImports": true // ajouter pour mois pour fixe un probleme vnode_modules/@angular/compiler-cli/src/transformers/util.d.ts:9:8
   },
   "files": [
     "src/main.ts",
