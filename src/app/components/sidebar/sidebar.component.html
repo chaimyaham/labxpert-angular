@@ -47,6 +47,24 @@
           { name: 'Gestion des Utilisateurs', path: '/user/all' }
         ]"
       ></app-sidebar-items>
+      <app-sidebar-items
+      groupeName="fournisseur"
+      groupeTitle="Fournisseur"
+      icon=""
+      [routes]="[
+        { name: 'Ajouter Fournisseur', path: '/addSupplier' },
+        { name: 'Gestion des Fournisseur', path: '/supplier/all' }
+      ]"
+    ></app-sidebar-items>
+    <app-sidebar-items
+    groupeName="reactif"
+    groupeTitle="Reactif"
+    icon=""
+    [routes]="[
+      { name: 'Ajouter Reactif', path: '/addReactif' },
+      { name: 'Gestion des Reactifs', path: '/reactif/all' }
+    ]"
+  ></app-sidebar-items>
 
         </div>
       </div>
