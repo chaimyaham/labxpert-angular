@@ -6,12 +6,24 @@ import _default from "chart.js/dist/core/core.layouts";
 import update = _default.update;
 import {UpdatePatientComponent} from "./components/patient/update-patient/update-patient.component";
 import {AddUtilisateurComponent} from "./components/utilitateur/add-utilisateur/add-utilisateur.component";
+import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
+import { AddFournisseurComponent } from './components/fournisseur/add-fournisseur/add-fournisseur.component';
+import { UpdateFournisseurComponent } from './components/fournisseur/update-fournisseur/update-fournisseur.component';
+import { ReactifComponent } from './components/reactif/reactif.component';
+import { AddReactifComponent } from './components/reactif/add-reactif/add-reactif.component';
+import { UpdateReactifComponent } from './components/reactif/update-reactif/update-reactif.component';
 
 const routes: Routes = [
   { path: 'addPatient', component: AddPatientComponent },
   { path: 'patient/all', component: AllPatientsComponent },
   { path: 'patient/update/:id', component: UpdatePatientComponent },
   { path: 'addUser', component: AddUtilisateurComponent },
+  { path: 'addSupplier', component: AddFournisseurComponent },
+  { path: 'supplier/all', component: FournisseurComponent },
+  { path: 'updateSupplier/:id', component: UpdateFournisseurComponent },
+  { path: 'reactif/all', component: ReactifComponent },
+  { path: 'addReactif', component: AddReactifComponent },
+  { path: 'updateReactif/:id', component: UpdateReactifComponent },
 ];
 
 @NgModule({

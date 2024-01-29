@@ -24,15 +24,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "src/assets/css/styles.css"
 
 
             ],
             "scripts": [
               "src/assets/js/scripts.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
               "src/assets/demo/datatables-demo.js",
               "src/assets/demo/chart-area-demo.js",
               "src/assets/demo/chart-bar-demo.js"

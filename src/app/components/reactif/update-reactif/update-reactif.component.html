@@ -1,0 +1,64 @@
+<div class="container-fluid mt-n10">
+    <div class="card mb-4">
+      <div class="card-header">Modifier le Reactif</div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+          <div class="container mt-4">
+            <form [formGroup]="reactifForm" (ngSubmit)="onSubmit()" class="row">
+                <div class="form-group col-md-12">
+                  <label for="nom">Nom :</label>
+                  <input type="text" id="nom" class="form-control" formControlName="nom" required>
+                 
+                  <div *ngIf="reactifForm.get('nom')?.invalid && (reactifForm.get('nom')?.dirty || reactifForm.get('nom')?.touched)" class="text-danger">
+                    Le nom est requis.
+                  </div>
+
+                </div>
+              
+                <div class="form-group col-md-12">
+                  <label for="description">Description :</label>
+                  <textarea id="description" class="form-control" formControlName="description" required></textarea>
+                  <div *ngIf="reactifForm.get('description')?.invalid && (reactifForm.get('description')?.dirty || reactifForm.get('description')?.touched)" class="text-danger">
+                    La description est requise.
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="fournisseur">Fournisseur :</label>
+                  <select id="fournisseur" class="form-control" formControlName="fournisseurIdFournisseur">
+                    <option *ngFor="let fournisseur of fournisseurs" [value]="fournisseur.idFournisseur" required>{{ fournisseur.nom }}</option>
+                  </select>
+                  <div *ngIf="reactifForm.get('fournisseurIdFournisseur')?.invalid && (reactifForm.get('fournisseurIdFournisseur')?.dirty || reactifForm.get('fournisseurIdFournisseur')?.touched)" class="text-danger">
+                    Le fournisseur est requis.
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="quantite">Quantité :</label>
+                    <input type="number" id="quantite" class="form-control" formControlName="quantite" min="1"  required>
+                    <div *ngIf="reactifForm.get('quantite')?.invalid && (reactifForm.get('quantite')?.dirty || reactifForm.get('quantite')?.touched)" class="text-danger">
+                      La quantité doit être supérieure à 0.
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="dateExpiration">Date d'expiration :</label>
+                  <input type="datetime-local" id="dateExpiration" class="form-control" formControlName="dateExpiration" required>
+                  <div *ngIf="reactifForm.get('dateExpiration')?.invalid && (reactifForm.get('dateExpiration')?.dirty || reactifForm.get('dateExpiration')?.touched)" class="text-danger">
+                    La date d'expiration est requise.
+                  </div>
+                </div>
+                <div *ngIf="errorMessage" class="alert text-danger">
+                  {{ errorMessage }}
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+
+              </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
