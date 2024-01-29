@@ -20,8 +20,8 @@ export class SidebarItemsComponent{
   constructor(private router: Router) {}
 
   navigateToRoute(route: RouteItem) {
- 
-    console.log(`Navigating to route: ${route.path}`);
+
+   // console.log(`Navigating to route: ${route.path}`);
     this.router.navigate([route.path]);
 }
 }

@@ -9,7 +9,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarItemsComponent } from './components/sidebar/sidebar-items/sidebar-items.component';
 import { AddPatientComponent } from './components/patient/add-patient/add-patient.component';
 import { AllPatientsComponent } from './components/patient/all-patients/all-patients.component';
+import {PatientService} from "./services/patient.service";
 
+import { AddUtilisateurComponent } from './components/utilitateur/add-utilisateur/add-utilisateur.component';
+import { UpdatePatientComponent } from './components/patient/update-patient/update-patient.component';
 import { AddAnalyseComponent } from './components/analyse/add-analyse/add-analyse.component';
 import { AllAnalyseComponent } from './components/analyse/all-analyse/all-analyse.component';
 import { AddEchantillonComponent } from './components/echantillon/add-echantillon/add-echantillon.component';
@@ -39,6 +42,8 @@ import { UpdateReactifComponent } from './components/reactif/update-reactif/upda
     SidebarItemsComponent,
     AddPatientComponent,
     AllPatientsComponent,
+    AddUtilisateurComponent,
+    UpdatePatientComponent,
     AddAnalyseComponent,
     AllAnalyseComponent,
     AddEchantillonComponent,
@@ -50,16 +55,16 @@ import { UpdateReactifComponent } from './components/reactif/update-reactif/upda
     AddReactifComponent,
     UpdateReactifComponent,
 
-
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     ReactiveFormsModule,
+    HttpClientModule,
     CommonModule,FormsModule,
     BsDatepickerModule.forRoot(),
+
 
   ],
 
