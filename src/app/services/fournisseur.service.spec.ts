@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { FournisseurService } from './fournisseur.service';
-import { HttpClient } from '@angular/common/http';
 import { Fournisseur } from '../models/fournisseur';
-import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -20,7 +18,7 @@ describe('FournisseurService', () => {
     service = TestBed.inject(FournisseurService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
-  describe('getAllFournisseurs()', () => {
+
     it('should be created', () => {
       expect(service).toBeTruthy();
     });
@@ -75,11 +73,30 @@ describe('FournisseurService', () => {
       });
     });
 
-    it('devrait modifier un fournisseur',()=>{
-      const idToUpdate=1;
-
-    })
-
-  })
+    it('devrait modifier un fournisseur', () => {
+      const idToUpdate = 4;
+      const updatedFournisseur: Fournisseur = {
+        idFournisseur: 4,
+        nom: "fournisseurUpdated",
+        adresse: "addressUpdated",
+        tel: "+2129999999",
+        deleted: false,
+      };
+    
+      service.updateFournisseur(updatedFournisseur, idToUpdate).subscribe((response) => {
+        expect(response).toEqual(updatedFournisseur);
+        const req = httpTestingController.expectOne(`${apiUrl}/${idToUpdate}`);
+        expect(req.request.method).toBe('PUT');
+        req.flush(updatedFournisseur);
+      });
+    });
+    it('devrait supprimer un fournisseur', () => {
+      const idToDelete = 1;
+      service.deleteFournisseur(idToDelete).subscribe(() => {
+        const req = httpTestingController.expectOne(`${apiUrl}/${idToDelete}`);
+        expect(req.request.method).toBe('DELETE');
+        req.flush(null);
+      });
+    });
    
 })

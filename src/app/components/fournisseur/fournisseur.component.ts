@@ -9,7 +9,9 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 })
 export class FournisseurComponent implements OnInit {
   fournisseurs: Fournisseur[] = [];
-
+  currentPage = 0;
+  pageSize = 4; 
+  fournisseursPages!: Fournisseur[][];
   constructor(private fournisseurService: FournisseurService) { }
 
   ngOnInit(): void {
@@ -19,11 +21,30 @@ export class FournisseurComponent implements OnInit {
     this.fournisseurService.getAllFournisseurs().subscribe(
       (data)=>{
         this.fournisseurs=data;
+        this.fournisseursPages = this.paginateFournisseurs(this.fournisseurs, this.pageSize);
       },
       (error)=>{
         console.error('error lors de la recuperationde la liste des fournisseur',error);
       }
     )
+  }
+  paginateFournisseurs(fournisseurs: Fournisseur[], pageSize: number): Fournisseur[][] {
+    const pages = [];
+    for (let i = 0; i < fournisseurs.length; i += pageSize) {
+      pages.push(fournisseurs.slice(i, i + pageSize));
+    }
+    return pages;
+  }
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.fournisseursPages.length - 1) {
+      this.currentPage++;
+    }
   }
   confirmAndDelete(fournisseur:Fournisseur): void {
     const confirmDelete = window.confirm('Voulez-vous vraiment supprimer ce fournisseur ?');

@@ -12,6 +12,9 @@ import { ReactifService } from 'src/app/services/reactif.service';
 export class ReactifComponent implements OnInit {
   reactifs :Reactif[]=[]
   fournisseurs:Fournisseur[]=[]
+  currentPage = 0;
+  pageSize = 3; 
+  reactifPages!: Reactif[][];
   constructor(
       private reactifService: ReactifService,  
       private fournisseurService : FournisseurService) { }
@@ -23,6 +26,7 @@ export class ReactifComponent implements OnInit {
     this.reactifService.getAllReactifs().subscribe(
       (response)=>{
         this.reactifs=response;
+        this.reactifPages = this.paginateReactif(this.reactifs, this.pageSize);
         for(let reactif of this.reactifs){
             this.fournisseurService.getFournisseurById(reactif.fournisseurIdFournisseur).subscribe(
               (response)=>{
@@ -39,6 +43,24 @@ export class ReactifComponent implements OnInit {
       }
     )
 
+  }
+  paginateReactif(reactifs: Reactif[], pageSize: number): Reactif[][] {
+    const pages = [];
+    for (let i = 0; i < reactifs.length; i += pageSize) {
+      pages.push(reactifs.slice(i, i + pageSize));
+    }
+    return pages;
+  }
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.reactifPages.length - 1) {
+      this.currentPage++;
+    }
   }
   confirmAndDelete(reactif:Reactif): void {
     const confirmDelete = window.confirm('Voulez-vous vraiment supprimer ce reactif ?');
