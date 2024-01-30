@@ -23,11 +23,9 @@ const routes: Routes = [
   { path: 'addUser', component: AddUtilisateurComponent },
   { path: 'user/all', component: AllUtilisateurComponent },
   { path:  'utilisateur/update/:id', component: UpdateUtilisateurComponent },
-
   { path: 'addAnalyse', component: AddAnalyseComponent },
   { path: 'addEchantillon', component: AddEchantillonComponent },
   { path: 'echantillon/all', component: ListEchantillonComponent },
-
   { path: 'addSupplier', component: AddFournisseurComponent },
   { path: 'supplier/all', component: FournisseurComponent },
   { path: 'updateSupplier/:id', component: UpdateFournisseurComponent },

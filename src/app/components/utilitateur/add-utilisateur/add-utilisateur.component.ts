@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+
+import {PatientService} from "../../../services/patient.service";
 import {Router} from "@angular/router";
 import {UtilisateurService} from "../../../services/utilisateur.service";
 
@@ -22,7 +24,9 @@ export class AddUtilisateurComponent implements OnInit {
       prenom: ['', Validators.required],
       adresse: ['', Validators.required],
       telephone: ['', Validators.required],
+
       sexe: ['', Validators.required],
+
       UserRole: ['', Validators.required],
       userName: ['', Validators.required],
       password: ['', Validators.required]
@@ -49,6 +53,7 @@ export class AddUtilisateurComponent implements OnInit {
 
         }
       )
+
 
     }
   }

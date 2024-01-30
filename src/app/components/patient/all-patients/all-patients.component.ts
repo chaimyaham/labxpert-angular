@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientService} from "../../../services/patient.service";
-import {Patient} from "../../../model/patient";
+
+import {Patient} from "../../../models/patient";
+
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -36,6 +38,7 @@ export class AllPatientsComponent implements OnInit {
     )
 
   }
+
 
   confirmAndDelete(patient:Patient): void {
     const confirmDelete = window.confirm('Voulez-vous vraiment supprimer ce patient ?');

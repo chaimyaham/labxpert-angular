@@ -32,6 +32,7 @@ export class AddPatientComponent implements OnInit {
   onSubmit() {
     if (this.patientForm.valid) {
       const formData=this.patientForm.value;
+
       console.log(formData);
       this.service.savePatient(formData).subscribe({
         next:(response) => {

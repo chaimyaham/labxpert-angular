@@ -2,33 +2,37 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Echantillon } from 'src/app/models/echantillon.interface';
+import { environment } from 'src/environments/environment';
+
+import {EchantillonRequest} from "../models/echantillonRequest";
+
 @Injectable({
   providedIn: 'root'
 })
 export class EchantillonService {
-  private apiUrl = 'http://localhost:8088/api/v1/echantillons';
+  private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   getAllEchantillons(): Observable<Echantillon[]> {
-    return this.http.get<Echantillon[]>(`${this.apiUrl}`).pipe(
+    return this.http.get<Echantillon[]>(`${this.apiUrl}echantillons`).pipe(
       catchError(this.handleErrors)
-    );;
+    );
   }
 
   getEchantillonById(id: number): Observable<Echantillon> {
-    let echantillon : Observable<Echantillon> = this.http.get<Echantillon>(`${this.apiUrl}/${id}`);
-    return echantillon;
+    return this.http.get<Echantillon>(`${this.apiUrl}echantillons/${id}`);
   }
 
-  createEchantillon(echantillon: any): Observable<Echantillon> {
-    return this.http.post<Echantillon>(`${this.apiUrl}`, echantillon);
+  createEchantillon(echantillonRequest: EchantillonRequest): Observable<EchantillonRequest> {
+    return this.http.post<EchantillonRequest>(`${this.apiUrl}echantillons`, echantillonRequest);
   }
 
-  updateEchantillon(id: number, echantillon: any): Observable<Echantillon> {
-    return this.http.put<Echantillon>(`${this.apiUrl}/${id}`, echantillon);
+  updateEchantillon(id: number, echantillon: Echantillon): Observable<Echantillon> {
+    return this.http.put<Echantillon>(`${this.apiUrl}echantillons/${id}`, echantillon);
   }
+
 
   deleteEchantillon(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}echantillons/${id}`);
   }
   private handleErrors(error: any): Observable<never> {
     console.error('Une erreur s\'est produite :', error);

@@ -5,6 +5,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="container mt-4">
+
             <form [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()" >
               <div class="form-group ">
                 <label for="nom" >Nom :</label>
@@ -36,6 +37,7 @@
                 <select id="UserRole" formControlName="UserRole" class="custom-select">
                   <option value="" disabled selected>Sélectionnez le role</option>
                   <option value="RESPONSABLE">RESPONSABLE</option>
+
                   <option value="TECHNICIEN">TECHNICIEN</option>
                 </select>
               </div>

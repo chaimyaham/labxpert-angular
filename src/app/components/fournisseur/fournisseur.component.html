@@ -17,7 +17,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let fournisseurItem of fournisseurs">
+                  <!-- <tr *ngFor="let fournisseurItem of fournisseurs"> -->
+                   <tr *ngFor="let fournisseurItem of fournisseursPages[currentPage]">
                     <td>{{ fournisseurItem.nom }}</td>
                     <td>{{ fournisseurItem.adresse }}</td>
                     <td>{{ fournisseurItem.tel }}</td>
@@ -32,6 +33,14 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="d-flex justify-content-center">
+                <button (click)="previousPage()" [disabled]="currentPage === 0" class="btn btn-outline-primary mr-2">
+                  <i class="fas fa-chevron-left"></i> 
+                </button>
+                <button (click)="nextPage()" [disabled]="currentPage === fournisseursPages.length - 1" class="btn btn-outline-primary">
+                   <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
         </div>
       </div>
     </div>
