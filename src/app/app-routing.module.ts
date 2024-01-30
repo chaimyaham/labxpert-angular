@@ -4,6 +4,9 @@ import { AddPatientComponent } from './components/patient/add-patient/add-patien
 import { AllPatientsComponent } from './components/patient/all-patients/all-patients.component';
 import {UpdatePatientComponent} from "./components/patient/update-patient/update-patient.component";
 import {AddUtilisateurComponent} from "./components/utilitateur/add-utilisateur/add-utilisateur.component";
+import { AddAnalyseComponent } from './components/analyse/add-analyse/add-analyse.component';
+import { AddEchantillonComponent } from './components/echantillon/add-echantillon/add-echantillon.component';
+import { ListEchantillonComponent } from './components/echantillon/list-echantillon/list-echantillon.component';
 import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
 import { AddFournisseurComponent } from './components/fournisseur/add-fournisseur/add-fournisseur.component';
 import { UpdateFournisseurComponent } from './components/fournisseur/update-fournisseur/update-fournisseur.component';
@@ -20,16 +23,22 @@ const routes: Routes = [
   { path: 'addUser', component: AddUtilisateurComponent },
   { path: 'user/all', component: AllUtilisateurComponent },
   { path:  'utilisateur/update/:id', component: UpdateUtilisateurComponent },
+
+  { path: 'addAnalyse', component: AddAnalyseComponent },
+  { path: 'addEchantillon', component: AddEchantillonComponent },
+  { path: 'echantillon/all', component: ListEchantillonComponent },
+
   { path: 'addSupplier', component: AddFournisseurComponent },
   { path: 'supplier/all', component: FournisseurComponent },
   { path: 'updateSupplier/:id', component: UpdateFournisseurComponent },
   { path: 'reactif/all', component: ReactifComponent },
   { path: 'addReactif', component: AddReactifComponent },
   { path: 'updateReactif/:id', component: UpdateReactifComponent },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,53 @@
+<div class="container-fluid mt-n10">
+  <div class="card mb-4">
+    <div class="card-header">Extended DataTables</div>
+    <div class="card-body">
+      <div class="datatable table-responsive">
+        <table class="table table-bordered table-hover" id="dataTable"
+          width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date de Réception</th>
+              <th>Code de l'Échantillon</th>
+              <th>ID du Patien</th>
+              <th>ID de l'Utilisateur'</th>
+              <th>Assigné</th>
+              <th>Créé le</th>
+              <th>Mis à jour le</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngIf="echantillons && echantillons.length > 0">
+
+            <tr *ngFor="let echantillion of echantillons">
+              <td>{{ echantillion.id}}</td>
+              <td>{{ echantillion.dateDeReception | date:'yyyy-MM-dd' }}</td>
+              <td>{{ echantillion.echantillonCode }}</td>
+              <td>{{ echantillion.patientId }}</td>
+              <td>{{ echantillion.utilisateurId }}</td>
+              <td>
+                <div [ngClass]="{'badge badge-pill': true, 'badge-success': echantillion.assigned, 'badge-warning': !echantillion.assigned}">
+                  {{ echantillion.assigned }}
+                </div>
+              </td>
+              <td>{{ echantillion.createdAt | date:'yyyy-MM-dd' }}</td>
+              <td>{{ echantillion.updatedAt | date:'yyyy-MM-ddTHH:mm:ss' }}</td>
+
+              <td>
+                <button type="button" class="btn btn-danger">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+                <button type="button" class="btn btn-primary">
+                  <i class="fas fa-edit" ></i>
+                </button>
+
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
