@@ -11,6 +11,10 @@ import {ReactifAnalyse} from "../../../models/reactifAnalyses.interface";
 
 import {Echantillon} from "../../../models/echantillon.interface";
 import {EchantillonRequest} from "../../../models/echantillonRequest";
+import {Patient} from "../../../models/patient";
+import {Utilisateur} from "../../../models/utilisateur";
+import {PatientService} from "../../../services/patient.service";
+import {UtilisateurService} from "../../../services/utilisateur.service";
 
 
 @Component({
@@ -22,6 +26,8 @@ import {EchantillonRequest} from "../../../models/echantillonRequest";
 export class AddEchantillonComponent implements OnInit {
   echantillonForm!: FormGroup;
   reactifs: Reactif[] = [];
+  patients: Patient[]= [] ;
+  utlisateurs: Utilisateur[]= [];
   reactifAnalyse: ReactifAnalyse[] = []
   nameError: string | null = null;
   errorMessage: string = '';
@@ -33,7 +39,9 @@ export class AddEchantillonComponent implements OnInit {
     private echantillonService: EchantillonService,
     private reactifService: ReactifService,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private patientService:PatientService,
+    private utilisateurService: UtilisateurService
   ) {
   }
 
@@ -49,6 +57,25 @@ export class AddEchantillonComponent implements OnInit {
         console.log(error);
       }
     )
+    this.utilisateurService.getAll().subscribe(
+      data => {
+        this.utlisateurs = data;
+      },
+      error => {
+
+        console.log(error);
+      }
+    )
+    this.patientService.getAll().subscribe(
+      data => {
+        this.patients = data;
+      },
+      error => {
+
+        console.log(error);
+      }
+    )
+
     this.initForm();
   }
 
@@ -65,12 +92,23 @@ export class AddEchantillonComponent implements OnInit {
 
   onSubmit(): void {
 
-    if (this.reactifAnalyse.length <= 0) {
-      this.errorMessage = " Veuillez en choisir un reactif."
-      return;
-    }
     const formData = this.echantillonForm.value;
     const dateDeReception = this.datePipe.transform(formData.dateDeReception, 'yyyy-MM-ddTHH:mm:ss');
+    console.log("errorMessage--- dateDeReception------", dateDeReception);
+
+    if(dateDeReception == null){
+      this.errorMessage = " Veuillez en choisir un Date Reciption.";
+      console.log("errorMessage--- dateDeReception------");
+      return;
+    }
+    if (this.reactifAnalyse.length <= 0) {
+      this.errorMessage = " Veuillez en choisir un reactif."
+      console.log("errorMessage--- reactifAnalyse------");
+      return;
+    }
+
+
+    console.log("dateDeReception");
     let echantillonRequest: EchantillonRequest;
     echantillonRequest = {
       utilisateurId: formData.utilisateurId,

@@ -18,12 +18,8 @@
                 <div class="form-group col-md-6">
                   <label for="patient">Patient :</label>
                   <select id="patient" class="form-control" formControlName="patientId">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
+                    <option *ngFor="let patient of patients" [value]="patient.id" required>{{ patient.nom }}
+                    </option>
                   </select>
                   <div
                     *ngIf="echantillonForm.get('patientId')?.invalid && (echantillonForm.get('patientId')?.dirty || echantillonForm.get('patientId')?.touched)"
@@ -34,13 +30,9 @@
 
                 <div class="form-group col-md-6">
                   <label for="utilisateur">Utilisteur :</label>
-                  <select id="utilisateur" class="form-control" formControlName="utilisateurId">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
+                  <select   id="utilisateur" class="form-control" formControlName="utilisateurId">
+                    <option *ngFor="let utlisateur of utlisateurs" [value]="utlisateur.id" required>{{ utlisateur.nom }}
+                    </option>
                   </select>
                   <div
                     *ngIf="echantillonForm.get('utilisateurId')?.invalid && (echantillonForm.get('utilisateurId')?.dirty || echantillonForm.get('utilisateurId')?.touched)"
