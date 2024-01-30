@@ -10,8 +10,8 @@
               <th>ID</th>
               <th>Date de Réception</th>
               <th>Code de l'Échantillon</th>
-              <th>ID du Patien</th>
-              <th>ID de l'Utilisateur'</th>
+              <th>Nom du Patien</th>
+              <th>Nom de l'Utilisateur'</th>
               <th>Assigné</th>
               <th>Créé le</th>
               <th>Mis à jour le</th>
@@ -24,8 +24,8 @@
               <td>{{ echantillion.id}}</td>
               <td>{{ echantillion.dateDeReception | date:'yyyy-MM-dd' }}</td>
               <td>{{ echantillion.echantillonCode }}</td>
-              <td>{{ echantillion.patientId }}</td>
-              <td>{{ echantillion.utilisateurId }}</td>
+              <td>{{ echantillion.patientNom }}</td>
+              <td>{{ echantillion.utilisateurNom }}</td>
               <td>
                 <div [ngClass]="{'badge badge-pill': true, 'badge-success': echantillion.assigned, 'badge-warning': !echantillion.assigned}">
                   {{ echantillion.assigned }}
