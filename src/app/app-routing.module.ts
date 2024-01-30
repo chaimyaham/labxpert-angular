@@ -15,6 +15,7 @@ import { AddReactifComponent } from './components/reactif/add-reactif/add-reacti
 import { UpdateReactifComponent } from './components/reactif/update-reactif/update-reactif.component';
 import {AllUtilisateurComponent} from "./components/utilitateur/all-utilisateur/all-utilisateur.component";
 import {UpdateUtilisateurComponent} from "./components/utilitateur/update-utilisateur/update-utilisateur.component";
+import { AllAnalyseComponent } from './components/analyse/all-analyse/all-analyse.component';
 
 const routes: Routes = [
   { path: 'addPatient', component: AddPatientComponent },
@@ -32,6 +33,8 @@ const routes: Routes = [
   { path: 'reactif/all', component: ReactifComponent },
   { path: 'addReactif', component: AddReactifComponent },
   { path: 'updateReactif/:id', component: UpdateReactifComponent },
+  { path: 'analyse/all', component: AllAnalyseComponent },
+  { path: 'addAnalyse', component: AddAnalyseComponent },
 
 ];
 
