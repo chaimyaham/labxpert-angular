@@ -1,0 +1,46 @@
+
+<div class="container-fluid mt-n10">
+  <div class="card mb-4">
+    <div class="card-header">Editer un Utilisateur</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container mt-4">
+
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Id</th><th>Nom</th><th>Prenom</th><th>Adresse</th><th>Telephone</th><th>sexe</th><th>Role</th><th>Username</th><th>Password</th><th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let utilisateur of utilisateurs">
+                <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.adresse }}</td>
+                <td>{{ utilisateur.telephone }}</td>
+                <td>{{ utilisateur.sexe }}</td>
+                <td>{{ utilisateur.UserRole }}</td>
+                <td>{{ utilisateur.userName }}</td>
+                <td>{{ utilisateur.password }}</td>
+
+                <td>
+                  <a [routerLink]="'/utilisateur/update/' + utilisateur.id" class="btn btn-secoondary btn-sm mr-2" title="Modifier">
+                    <i class="fa fa-pencil-alt"></i>
+                  </a>
+                  <button (click)="confirmAndDelete(utilisateur)"  class="btn btn-outline-danger btn-sm" title="Supprimer">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

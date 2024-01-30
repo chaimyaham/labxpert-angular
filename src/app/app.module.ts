@@ -23,6 +23,9 @@ import { ReactifComponent } from './components/reactif/reactif.component';
 import { AddReactifComponent } from './components/reactif/add-reactif/add-reactif.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { UpdateReactifComponent } from './components/reactif/update-reactif/update-reactif.component';
+import {AllUtilisateurComponent} from "./components/utilitateur/all-utilisateur/all-utilisateur.component";
+import { UpdateUtilisateurComponent } from './components/utilitateur/update-utilisateur/update-utilisateur.component';
+
 
 
 
@@ -43,6 +46,9 @@ import { UpdateReactifComponent } from './components/reactif/update-reactif/upda
     ReactifComponent,
     AddReactifComponent,
     UpdateReactifComponent,
+    AllUtilisateurComponent,
+    UpdateUtilisateurComponent
+
 
   ],
   imports: [

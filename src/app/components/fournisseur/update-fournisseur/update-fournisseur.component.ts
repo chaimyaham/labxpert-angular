@@ -16,16 +16,16 @@ export class UpdateFournisseurComponent implements OnInit {
   fournisseurId!: string;
 
   constructor(private formBuilder: FormBuilder,private fournisseurService : FournisseurService,private router: Router , private route: ActivatedRoute) { }
-  
+
   ngOnInit(): void {
-    this.initForm(); 
+    this.initForm();
 
     this.route.params.subscribe(params => {
       this.fournisseurId = params['id'];
       this.fournisseurService.getFournisseurById(parseInt(this.fournisseurId)).subscribe(
         (fournisseur: Fournisseur) => {
           this.existingFournisseur = fournisseur;
-          this.updateForm(); 
+          this.updateForm();
         },
         error => {
           console.error("Erreur lors de la récupération du fournisseur :", error);
@@ -33,7 +33,7 @@ export class UpdateFournisseurComponent implements OnInit {
       );
     });
   }
-  
+
   initForm(): void {
     this.fournisseurForm = this.formBuilder.group({
       nom: ['', Validators.required],
@@ -43,7 +43,7 @@ export class UpdateFournisseurComponent implements OnInit {
 
   }
   updateForm(): void {
-    if (this.existingFournisseur) {
+    if (this.existingFournisseur ) {
       this.fournisseurForm.patchValue({
         nom: this.existingFournisseur.nom,
         adresse: this.existingFournisseur.adresse,
@@ -58,7 +58,7 @@ export class UpdateFournisseurComponent implements OnInit {
       this.fournisseurService.updateFournisseur(formData,parseInt(this.fournisseurId)).subscribe(
         (response)=>{
           console.log("Fournisseur modifier envoyer avec success",response);
-          this.router.navigate(['supplier/all']); 
+          this.router.navigate(['supplier/all']);
         },
         (error)=>{
           console.error('Erreur lors de envoi des données au backend', error);
@@ -67,11 +67,11 @@ export class UpdateFournisseurComponent implements OnInit {
           } else {
             this.nameError = 'Une erreur s\'est produite lors de l\'ajout du fournisseur.';
           }
-          
+
         }
       )
 
     }
-    
+
   }
 }

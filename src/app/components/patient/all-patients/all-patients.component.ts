@@ -35,9 +35,7 @@ export class AllPatientsComponent implements OnInit {
       }
     )
 
-
   }
-
 
   confirmAndDelete(patient:Patient): void {
     const confirmDelete = window.confirm('Voulez-vous vraiment supprimer ce patient ?');

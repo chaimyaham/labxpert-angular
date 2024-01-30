@@ -5,7 +5,6 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="container mt-4">
-
             <form [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()" >
               <div class="form-group ">
                 <label for="nom" >Nom :</label>
@@ -25,10 +24,18 @@
                 <input type="text" class="form-control" formControlName="telephone" required>
               </div>
               <div class ="form-group " >
+                <label for="sexe">Sexe :</label>
+                <select id="sexe" formControlName="sexe" class="custom-select">
+                  <option  disabled selected>Sélectionnez le sexe</option>
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
+                </select>
+              </div>
+              <div class ="form-group " >
                 <label for="UserRole">Role :</label>
                 <select id="UserRole" formControlName="UserRole" class="custom-select">
                   <option value="" disabled selected>Sélectionnez le role</option>
-                  <option value="RESPONSABLE"></option>
+                  <option value="RESPONSABLE">RESPONSABLE</option>
                   <option value="TECHNICIEN">TECHNICIEN</option>
                 </select>
               </div>
@@ -40,9 +47,7 @@
                 <label for="password" >password</label>
                 <input type="text" class="form-control" id="password" formControlName="password" required>
               </div>
-
               <button type="submit" class="btn btn-primary" >Ajouter </button>
-
             </form>
           </div>
         </div>

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddPatientComponent } from './components/patient/add-patient/add-patient.component';
 import { AllPatientsComponent } from './components/patient/all-patients/all-patients.component';
-import _default from "chart.js/dist/core/core.layouts";
-import update = _default.update;
 import {UpdatePatientComponent} from "./components/patient/update-patient/update-patient.component";
 import {AddUtilisateurComponent} from "./components/utilitateur/add-utilisateur/add-utilisateur.component";
 import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
@@ -12,12 +10,16 @@ import { UpdateFournisseurComponent } from './components/fournisseur/update-four
 import { ReactifComponent } from './components/reactif/reactif.component';
 import { AddReactifComponent } from './components/reactif/add-reactif/add-reactif.component';
 import { UpdateReactifComponent } from './components/reactif/update-reactif/update-reactif.component';
+import {AllUtilisateurComponent} from "./components/utilitateur/all-utilisateur/all-utilisateur.component";
+import {UpdateUtilisateurComponent} from "./components/utilitateur/update-utilisateur/update-utilisateur.component";
 
 const routes: Routes = [
   { path: 'addPatient', component: AddPatientComponent },
   { path: 'patient/all', component: AllPatientsComponent },
   { path: 'patient/update/:id', component: UpdatePatientComponent },
   { path: 'addUser', component: AddUtilisateurComponent },
+  { path: 'user/all', component: AllUtilisateurComponent },
+  { path:  'utilisateur/update/:id', component: UpdateUtilisateurComponent },
   { path: 'addSupplier', component: AddFournisseurComponent },
   { path: 'supplier/all', component: FournisseurComponent },
   { path: 'updateSupplier/:id', component: UpdateFournisseurComponent },
