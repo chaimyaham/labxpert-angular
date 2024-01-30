@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientService} from "../../../services/patient.service";
-import {Patient} from "../../../models/patient";
+import {Patient} from "../../../model/patient";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {HttpErrorResponse} from "@angular/common/http";
