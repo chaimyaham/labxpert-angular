@@ -112,7 +112,7 @@ export class AddEchantillonComponent implements OnInit {
       this.errorMessage = "Réactif non trouvé !"
       return '';
     }
-
+  }
   creatReactifsList(){
 
       const reactifId = this.echantillonForm.get('reactifId')?.value;
@@ -137,30 +137,30 @@ export class AddEchantillonComponent implements OnInit {
   }
 
 
-  creatReactifsList() {
-    const reactifId = this.echantillonForm.get('reactifId')?.value;
-    console.log(`reactif Id ${reactifId}`);
-    if (!reactifId) {
-      return;
-    }
-    if (this.reactifAnalyse.find(reactif => reactif.reactifIdReactif === reactifId)) {
-      this.errorMessage = "Ce réactif a déjà été sélectionné. Veuillez en choisir un autre."
-      return;
-    }
-    const quantite = this.echantillonForm.get('quantite')?.value;
-    // Réinitialisez seulement les champs 'reactifId' et 'quantite'
-    this.echantillonForm.get('reactifId')?.reset();
-    this.echantillonForm.get('quantite')?.reset();
+  // creatReactifsList() {
+  //   const reactifId = this.echantillonForm.get('reactifId')?.value;
+  //   console.log(`reactif Id ${reactifId}`);
+  //   if (!reactifId) {
+  //     return;
+  //   }
+  //   if (this.reactifAnalyse.find(reactif => reactif.reactifIdReactif === reactifId)) {
+  //     this.errorMessage = "Ce réactif a déjà été sélectionné. Veuillez en choisir un autre."
+  //     return;
+  //   }
+  //   const quantite = this.echantillonForm.get('quantite')?.value;
+  //   // Réinitialisez seulement les champs 'reactifId' et 'quantite'
+  //   this.echantillonForm.get('reactifId')?.reset();
+  //   this.echantillonForm.get('quantite')?.reset();
 
 
-    const newReactif: ReactifAnalyse = {
-      id: 0,
-      reactifIdReactif: reactifId,
-      quantite: quantite,
-    };
-    this.reactifAnalyse.push(newReactif);
+  //   const newReactif: ReactifAnalyse = {
+  //     id: 0,
+  //     reactifIdReactif: reactifId,
+  //     quantite: quantite,
+  //   };
+  //   this.reactifAnalyse.push(newReactif);
 
-  }
+  // }
 
 
 }
