@@ -5,6 +5,7 @@ import { Echantillon } from 'src/app/models/echantillon.interface';
 import { environment } from 'src/environments/environment';
 
 import {EchantillonRequest} from "../models/echantillonRequest";
+import EchantillonResponse from "../models/echantillonResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ import {EchantillonRequest} from "../models/echantillonRequest";
 export class EchantillonService {
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
-  getAllEchantillons(): Observable<Echantillon[]> {
-    return this.http.get<Echantillon[]>(`${this.apiUrl}echantillons`).pipe(
+  getAllEchantillons(): Observable<EchantillonResponse[]> {
+    return this.http.get<EchantillonResponse[]>(`${this.apiUrl}echantillons`).pipe(
       catchError(this.handleErrors)
     );
   }
