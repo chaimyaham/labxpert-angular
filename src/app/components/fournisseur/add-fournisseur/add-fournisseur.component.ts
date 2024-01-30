@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
+
 
 
 @Component({
@@ -14,7 +15,7 @@ export class AddFournisseurComponent implements OnInit {
   nameError: string | null = null;
 
   constructor(private formBuilder: FormBuilder,private fournisseurService : FournisseurService,private router: Router) { }
-
+ 
   ngOnInit(): void {
     this.initForm();
   }

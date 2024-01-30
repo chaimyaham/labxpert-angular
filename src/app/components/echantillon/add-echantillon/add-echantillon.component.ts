@@ -8,8 +8,10 @@ import {Reactif} from "../../../models/reactif";
 import {ReactifService} from "../../../services/reactif.service";
 import {DatePipe} from "@angular/common";
 import {ReactifAnalyse} from "../../../models/reactifAnalyses.interface";
+
 import {Echantillon} from "../../../models/echantillon.interface";
 import {EchantillonRequest} from "../../../models/echantillonRequest";
+
 
 
 @Component({
@@ -40,10 +42,12 @@ export class AddEchantillonComponent implements OnInit {
   ngOnInit(): void {
 
     this.reactifService.getAllReactifs().subscribe(
-      data => {
+
+      data =>{
         this.reactifs = data;
       },
-      error => {
+      error =>{
+
         console.log(error);
       }
     )
@@ -62,6 +66,7 @@ export class AddEchantillonComponent implements OnInit {
   }
 
   onSubmit(): void {
+
     if(this.reactifAnalyse.length <= 0){
       this.errorMessage = " Veuillez en choisir un reactif."
       return;
@@ -107,6 +112,28 @@ export class AddEchantillonComponent implements OnInit {
       this.errorMessage = "Réactif non trouvé !"
       return '';
     }
+
+  creatReactifsList(){
+
+      const reactifId = this.echantillonForm.get('reactifId')?.value;
+      if (!reactifId){
+        return;
+      }
+      const quantite = this.echantillonForm.get('quantite')?.value;
+      // Réinitialisez seulement les champs 'reactifId' et 'quantite'
+      this.echantillonForm.get('reactifId')?.reset();
+      this.echantillonForm.get('quantite')?.reset();
+
+      console.log("reactif id", reactifId)
+      console.log("quantite", quantite)
+      const newReactif: ReactifAnalyse = {
+        id :0,
+        reactifIdReactif: reactifId,
+        quantite: quantite,
+      };
+
+      this.reactifAnalyse.push(newReactif);
+
   }
 
 

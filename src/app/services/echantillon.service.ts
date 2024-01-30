@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Echantillon } from 'src/app/models/echantillon.interface';
 import { environment } from 'src/environments/environment';
+
 import {EchantillonRequest} from "../models/echantillonRequest";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +29,7 @@ export class EchantillonService {
   updateEchantillon(id: number, echantillon: Echantillon): Observable<Echantillon> {
     return this.http.put<Echantillon>(`${this.apiUrl}echantillons/${id}`, echantillon);
   }
+
 
   deleteEchantillon(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}echantillons/${id}`);
