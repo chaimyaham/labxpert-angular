@@ -62,6 +62,10 @@ export class AddEchantillonComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if(this.reactifAnalyse.length <= 0){
+      this.errorMessage = " Veuillez en choisir un reactif."
+      return;
+    }
     const formData = this.echantillonForm.value;
     const dateDeReception = this.datePipe.transform(formData.dateDeReception, 'yyyy-MM-ddTHH:mm:ss');
     let echantillonRequest: EchantillonRequest;
