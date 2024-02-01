@@ -1,5 +1,5 @@
 <!-- sidebar-items.component.html -->
-<div class="sidenav-menu-heading">{{ groupeName }}</div>
+<div class="sidenav-menu-heading fixed-width-sidebar row">{{ groupeName }}</div>
 <a
   class="nav-link collapsed"
   href="javascript:void(0);"
@@ -8,7 +8,7 @@
   aria-expanded="false"
   [attr.aria-controls]="collapseId"
 >
-  <div class="nav-link-icon"><i data-feather="activity"></i></div>
+  <div class="nav-link-icon"><i [attr.data-feather]="icon"></i></div>
   {{ groupeTitle }}
   <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 </a>

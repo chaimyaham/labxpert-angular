@@ -12,6 +12,9 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class AllUtilisateurComponent implements OnInit {
   utilisateurs!: Utilisateur[]
   searchForm!: FormGroup;
+  currentPage = 0;
+  pageSize = 4; 
+  utilisateursPages!: Utilisateur[][];
   constructor(private utilisateurService: UtilisateurService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -21,6 +24,7 @@ export class AllUtilisateurComponent implements OnInit {
     this.utilisateurService.getAll().subscribe(
       (reponse: Utilisateur[]) => {
         this.utilisateurs = reponse
+        this.utilisateursPages = this.paginateUtilisateur(this.utilisateurs, this.pageSize);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -47,6 +51,24 @@ export class AllUtilisateurComponent implements OnInit {
       }
     )
 
+  }
+  paginateUtilisateur(utilisateurs: Utilisateur[], pageSize: number): Utilisateur[][] {
+    const pages = [];
+    for (let i = 0; i < utilisateurs.length; i += pageSize) {
+      pages.push(utilisateurs.slice(i, i + pageSize));
+    }
+    return pages;
+  }
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.utilisateursPages.length - 1) {
+      this.currentPage++;
+    }
   }
 
 }

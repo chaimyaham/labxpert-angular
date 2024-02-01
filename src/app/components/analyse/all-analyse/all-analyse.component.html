@@ -4,6 +4,64 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-12">
+            <table class="table table-bordered table-hover text-center table-striped item-center" 
+            width="100%" >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom de l 'anlyse</th>
+                <th>Créé le</th>
+                <th>Plus d'informations</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody >
+  
+              <tr >
+                <td class="align-middle"></td>
+                <td class="align-middle"></td>
+                <td class="align-middle"></td>
+                <td class="align-middle">
+
+                  <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalLg">plus d'infos</button>
+                  <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title">Nom d 'analyse</h5>
+                                  <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                              </div>
+                              <div class="modal-body">
+                                <h3 class="float-left">Type de tests</h3>
+                
+                                <ul class="float-left"> 
+                                  <li>Test 1</li>
+                                  <li>Test 2</li>
+                                </ul>
+                                  
+                              </div>
+                              <div class="modal-footer"><button class="btn btn-primary" type="button" data-dismiss="modal">Close</button></div>
+                          </div>
+                      </div>
+                  </div>
+                </td>
+      
+        
+  
+                <td class="align-middle">
+                  <a type="button" class="btn btn-secoondary btn-sm mr-2">
+                    <i class="fa fa-pencil-alt"></i>
+                  </a>
+                  <button type="button" class="btn btn-outline-danger btn-sm">
+                    <i class="fa fa-trash"></i>
+                  </button>
+          
+  
+                </td>
+              </tr>
+  
+            </tbody>
+          </table>
             
           </div>
         </div>
