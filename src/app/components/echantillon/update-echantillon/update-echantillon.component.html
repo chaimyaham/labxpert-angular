@@ -1,0 +1,83 @@
+<div class="container mt-n10">
+    <div class="card mb-4">
+      <div class="card-header">Modifier Un Echantillon</div>
+      <div class="card-body">
+        <form [formGroup]="echantillonForm" (ngSubmit)="onSubmit()" class="row">
+          <div class="form-group col-md-6">
+            <label for="dateDeReception">La date de reception :</label>
+            <input type="datetime-local" id="dateDeReception" class="form-control" formControlName="dateDeReception" required>
+            <div *ngIf="echantillonForm.get('dateDeReception')?.invalid && (echantillonForm.get('dateDeReception')?.dirty || echantillonForm.get('dateDeReception')?.touched)" class="text-danger">
+              La date de reception est requise.
+            </div>
+          </div>
+  
+          <div class="form-group col-md-6">
+            <label for="patient">Patient :</label>
+            <select id="patient" class="form-control" formControlName="patientId" required>
+              <option *ngFor="let patient of patients" [value]="patient.id">{{ patient.nom }}</option>
+            </select>
+            <div *ngIf="echantillonForm.get('patientId')?.invalid && (echantillonForm.get('patientId')?.dirty || echantillonForm.get('patientId')?.touched)" class="text-danger">
+              Le Patient est requis.
+            </div>
+          </div>
+  
+          <div class="form-group col-md-12">
+            <label for="utilisateur">Utilisteur :</label>
+            <select id="utilisateur" class="form-control" formControlName="utilisateurId" required>
+              <option *ngFor="let utilisateur of utlisateurs" [value]="utilisateur.id">{{ utilisateur.nom }}</option>
+            </select>
+            <div *ngIf="echantillonForm.get('utilisateurId')?.invalid && (echantillonForm.get('utilisateurId')?.dirty || echantillonForm.get('utilisateurId')?.touched)" class="text-danger">
+              Le Utilisateur est requis.
+            </div>
+          </div>
+  
+          <div class="form-group col-md-4">
+            <label for="reactif">Reactif :</label>
+            <select id="reactif" class="form-control" formControlName="reactifId" required>
+              <option *ngFor="let reactif of reactifs" [value]="reactif.idReactif">{{ reactif.nom }}</option>
+            </select>
+            <div *ngIf="echantillonForm.get('reactifId')?.invalid && (echantillonForm.get('reactifId')?.dirty || echantillonForm.get('reactifId')?.touched)" class="text-danger">
+              Le reactif est requis.
+            </div>
+          </div>
+  
+          <div class="form-group col-md-4">
+            <label for="quantite">Quantité :</label>
+            <input type="number" id="quantite" class="form-control" formControlName="quantite" min="1" required>
+            <div *ngIf="echantillonForm.get('quantite')?.invalid && (echantillonForm.get('quantite')?.dirty || echantillonForm.get('quantite')?.touched)" class="text-danger">
+              La quantité doit être supérieure à 0.
+            </div>
+          </div>
+  
+          <div class="form-group col-md-4">
+            <label>&nbsp;</label>
+            <a (click)="creatReactifsList()" class="btn btn-light btn-block">
+              <i class="fas fa-plus"></i> Ajouter Reactif
+            </a>
+          </div>
+  
+          <!-- <div *ngIf="errorMessage" class="alert text-danger col-md-12">
+            {{ errorMessage }}
+          </div> -->
+  
+          <div class="col-md-12 d-flex"*ngFor="let _reactif of reactifAnalyse">
+            <div class="form-group col-md-6">
+              <label for="reactifSet">Reactif :</label>
+              <input id="reactifSet" type="text" class="form-control" [value]="getReactifNom(_reactif.reactifIdReactif)" disabled>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="quantiteSet">Quantité :</label>
+              <input id="quantiteSet" type="number" class="form-control" [value]="_reactif.quantite" disabled>
+            </div>
+          </div>
+          
+          
+  
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
