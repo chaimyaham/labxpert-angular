@@ -20,6 +20,7 @@ import { AllAnalyseComponent } from './components/analyse/all-analyse/all-analys
 import {AddPlanificationComponent} from "./components/planification/add-planification/add-planification.component";
 
 import { UpdateEchantillonComponent } from './components/echantillon/update-echantillon/update-echantillon.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'addAnalyse', component: AddAnalyseComponent },
   { path: 'addPlanification', component: AddPlanificationComponent },
   { path: 'updateSample/:id', component: UpdateEchantillonComponent },
+  { path: '', component: HomeComponent },
 
 ];
 

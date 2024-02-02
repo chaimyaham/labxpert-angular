@@ -29,7 +29,14 @@ export class AnalyseService {
   updateAnalyse(id: number, analyseRequest: AnalyseRequest): Observable<AnalyseRequest> {
     return this.http.put<AnalyseRequest>(`${this.apiUrl}analyse/${id}`, analyseRequest);
   }
+getAlltypeAnalyseByIdAnalyse(id: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}analyse/${id}/type-analyses/`);
 
+
+}
+getAllTestOfATypeOfAnalyse(idAnalyse : number, idType:number) : Observable<any>{
+  return this.http.get<any>(`${this.apiUrl}analyse/${idAnalyse}/type-analyses/${idType}/tests/`);
+}
 
   deleteEchantillon(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}echantillons/${id}`);
