@@ -3,6 +3,7 @@
       <div class="sidenav-menu">
         <div class="nav accordion" id="accordionSidenav">
           <app-sidebar-items
+          icon="users"
             [routes]="[
               { name: 'Ajouter nouveau Patient', path: '/addPatient' },
               { name: 'Gestion des Patients', path: '/patient/all' }
@@ -12,7 +13,7 @@
           <app-sidebar-items
             groupeName="echantillion"
             groupeTitle="Echantillion"
-            icon=""
+            icon="droplet"
             [routes]="[
               { name: 'Nouveau echantillion', path: '/addEchantillon' },
               { name: 'Gestion des Echantillon', path: '/echantillon/all' }
@@ -21,7 +22,7 @@
           <app-sidebar-items
             groupeName="planification"
             groupeTitle="Planification"
-            icon=""
+            icon="calendar"
             [routes]="[
               { name: 'Nouveau Planification', path: '/addPlanification' },
               { name: 'Gestion des Planification', path: '/planification/all' }
@@ -30,7 +31,7 @@
           <app-sidebar-items
           groupeName="analyse"
           groupeTitle="Analyse"
-          icon=""
+          icon="activity"
           [routes]="[
             { name: 'Ajouter Analyse', path: '/addAnalyse' },
             { name: 'Gestion des Analyses', path: '/analyse/all' }
@@ -40,7 +41,7 @@
         <app-sidebar-items
         groupeName="utilisateur"
         groupeTitle="Utilisateur"
-        icon=""
+        icon="user-plus"
         [routes]="[
           { name: 'Ajouter Utilisateur', path: '/addUser' },
           { name: 'Gestion des Utilisateurs', path: '/user/all' }
@@ -49,7 +50,7 @@
       <app-sidebar-items
       groupeName="fournisseur"
       groupeTitle="Fournisseur"
-      icon=""
+      icon="truck"
       [routes]="[
         { name: 'Ajouter Fournisseur', path: '/addSupplier' },
         { name: 'Gestion des Fournisseur', path: '/supplier/all' }
@@ -58,7 +59,7 @@
     <app-sidebar-items
     groupeName="reactif"
     groupeTitle="Reactif"
-    icon=""
+    icon="list"
     [routes]="[
       { name: 'Ajouter Reactif', path: '/addReactif' },
       { name: 'Gestion des Reactifs', path: '/reactif/all' }

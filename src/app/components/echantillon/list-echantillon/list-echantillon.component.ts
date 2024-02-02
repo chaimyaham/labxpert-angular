@@ -16,6 +16,9 @@ declare const feather: any;
 export class ListEchantillonComponent implements OnInit, AfterViewInit {
 
   echantillons: EchantillonResponse[] = [];
+  currentPage = 0;
+  pageSize = 4; 
+  echantillonsPages!: EchantillonResponse[][];
 
   constructor(private echantillonService: EchantillonService,
               private patientService: PatientService,
@@ -31,6 +34,7 @@ export class ListEchantillonComponent implements OnInit, AfterViewInit {
       (data) => {
         console.log(data);
         this.echantillons = data;
+        this.echantillonsPages = this.paginateFournisseurs(this.echantillons, this.pageSize);
 
       },
       (error) => {
@@ -38,6 +42,24 @@ export class ListEchantillonComponent implements OnInit, AfterViewInit {
 
       }
     );
+  }
+  paginateFournisseurs(echantillons: EchantillonResponse[], pageSize: number): EchantillonResponse[][] {
+    const pages = [];
+    for (let i = 0; i < echantillons.length; i += pageSize) {
+      pages.push(echantillons.slice(i, i + pageSize));
+    }
+    return pages;
+  }
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.echantillonsPages.length - 1) {
+      this.currentPage++;
+    }
   }
 
 

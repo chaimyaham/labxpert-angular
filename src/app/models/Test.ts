@@ -1,5 +1,5 @@
 export interface Test{
-    nom: string;
+  nom: string;
     unit: string;
     minValue : number;
     maxValue: number;
