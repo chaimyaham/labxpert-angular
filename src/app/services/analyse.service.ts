@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 import {AnalyseRequest} from "../models/analyseRequest";
+import Analyse from "../models/analyse";
 
 
 @Injectable({
@@ -12,10 +13,8 @@ export class AnalyseService {
 
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
-  getAllAnalyse(): Observable<any> {
-    return this.http.get<any[]>(`${this.apiUrl}analyse`).pipe(
-      catchError(this.handleErrors)
-    );
+  getAllAnalyse(): Observable<Analyse[]> {
+    return this.http.get<Analyse[]>(`${this.apiUrl}analyse`)
   }
 
   getAnalyseById(id: number): Observable<any> {
