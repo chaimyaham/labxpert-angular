@@ -32,7 +32,7 @@
               <div class="form-group col-md-4">
                 <label for="echantillon">Echontillon :</label>
                 <select id="echantillon" class="form-control" formControlName="echantillonId">
-                  <option *ngFor="let echontillon of echantillons" [value]="echontillon?.id" required>{{ echontillon?.id }}</option>
+                  <option *ngFor="let echontillon of echantillons" [value]="echontillon?.id" required>{{ echontillon?.echantillonCode }}</option>
                 </select>
                 <div *ngIf="planificationForm.get('echantillonId')?.invalid && (planificationForm.get('echantillonId')?.dirty || planificationForm.get('echantillonIdEchantillon')?.touched)" class="text-danger">
                   echantillonest requis.
@@ -41,7 +41,7 @@
               <div class="form-group col-md-4">
                 <label for="analyse">Analyse :</label>
                 <select id="analyse" class="form-control" formControlName="analyseId">
-                  <option>1</option>
+                  <option *ngFor="let analyse of analyses" [value]="analyse?.id" required>{{ analyse?.nom }}</option>
                 </select>
                 <div *ngIf="planificationForm.get('analyseId')?.invalid && (planificationForm.get('analyseId')?.dirty || planificationForm.get('analyseIdAnalyse')?.touched)" class="text-danger">
                   Le analyses est requis.
