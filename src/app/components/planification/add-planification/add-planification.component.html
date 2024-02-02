@@ -1,0 +1,65 @@
+<div class="container-fluid mt-n10">
+  <div class="card mb-4">
+    <div class="card-header">Ajouter Un nouveau planification</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="container mt-4">
+            <form [formGroup]="planificationForm" (ngSubmit)="onSubmit()" class="row ">
+              <div class="form-group col-md-12">
+                <label for="datecreation">Date Debut :</label>
+                <input type="datetime-local" id="datecreation" class="form-control" formControlName="dateDebut" required>
+                <div *ngIf="planificationForm.get('dateDebut')?.invalid && (planificationForm.get('dateDebut')?.dirty || planificationForm.get('dateDebut')?.touched)" class="text-danger">
+                  La date de creation est requise.
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="commentaire">commentaire :</label>
+                <textarea id="commentaire" class="form-control" formControlName="commentaire" required></textarea>
+                <div *ngIf="planificationForm.get('commentaire')?.invalid && (planificationForm.get('commentaire')?.dirty || planificationForm.get('commentaire')?.touched)" class="text-danger">
+                  La description est requise.
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="utilisateur">Utilisateur :</label>
+                <select id="utilisateur" class="form-control" formControlName="utilisateurId">
+                  <option *ngFor="let utilisateur of utilisateurs" [value]="utilisateur.id" required>{{ utilisateur.nom }}</option>
+                </select>
+                <div *ngIf="planificationForm.get('utilisateurId')?.invalid && (planificationForm.get('utilisateurId')?.dirty || planificationForm.get('utilisateurId')?.touched)" class="text-danger">
+                  Le utilisateur est requis.
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="echantillon">Echontillon :</label>
+                <select id="echantillon" class="form-control" formControlName="echantillonId">
+                  <option *ngFor="let echontillon of echantillons" [value]="echontillon?.id" required>{{ echontillon?.id }}</option>
+                </select>
+                <div *ngIf="planificationForm.get('echantillonId')?.invalid && (planificationForm.get('echantillonId')?.dirty || planificationForm.get('echantillonIdEchantillon')?.touched)" class="text-danger">
+                  echantillonest requis.
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="analyse">Analyse :</label>
+                <select id="analyse" class="form-control" formControlName="analyseId">
+                  <option>1</option>
+                </select>
+                <div *ngIf="planificationForm.get('analyseId')?.invalid && (planificationForm.get('analyseId')?.dirty || planificationForm.get('analyseIdAnalyse')?.touched)" class="text-danger">
+                  Le analyses est requis.
+                </div>
+              </div>
+              <div *ngIf="errorMessage" class="alert text-danger">
+                {{ errorMessage }}
+              </div>
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

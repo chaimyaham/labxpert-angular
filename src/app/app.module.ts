@@ -32,6 +32,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { UpdateReactifComponent } from './components/reactif/update-reactif/update-reactif.component';
 import {AllUtilisateurComponent} from "./components/utilitateur/all-utilisateur/all-utilisateur.component";
 import { UpdateUtilisateurComponent } from './components/utilitateur/update-utilisateur/update-utilisateur.component';
+import { PlanificationComponent } from './components/planification/planification.component';
+import { AddPlanificationComponent } from './components/planification/add-planification/add-planification.component';
 
 
 
@@ -59,7 +61,9 @@ import { UpdateUtilisateurComponent } from './components/utilitateur/update-util
     AddReactifComponent,
     UpdateReactifComponent,
     AllUtilisateurComponent,
-    UpdateUtilisateurComponent
+    UpdateUtilisateurComponent,
+    PlanificationComponent,
+    AddPlanificationComponent
 
   ],
 
