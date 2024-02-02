@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+
 import {Echantillon} from "../../models/echantillon.interface";
 import {Utilisateur} from "../../models/utilisateur";
 import {EchantillonService} from "../../services/echantillon.service";
@@ -9,6 +11,7 @@ import {AnalyseRequest} from "../../models/analyseRequest";
 import {AnalyseService} from "../../services/analyse.service";
 
 
+
 @Component({
   selector: 'app-planification',
   templateUrl: './planification.component.html',
@@ -16,7 +19,7 @@ import {AnalyseService} from "../../services/analyse.service";
 })
 export class PlanificationComponent implements OnInit {
 
-  planifications :Planification[]=[]
+ planifications :Planification[]=[]
   utilisateurs:Utilisateur[]=[]
   echantillons:Echantillon[]=[]
   analyses:AnalyseRequest[]=[]
@@ -29,6 +32,9 @@ export class PlanificationComponent implements OnInit {
     private utilisateurService:UtilisateurService,
     private planificationService : PlanificationService,
     private analyseService:AnalyseService
+
+
+
 
 
 
@@ -84,6 +90,7 @@ this.getPlanification()
     if (this.currentPage < this.palanificationfPages.length - 1) {
       this.currentPage++;
     }
+
   }
 
 

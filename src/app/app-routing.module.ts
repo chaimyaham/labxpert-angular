@@ -23,6 +23,7 @@ import { UpdateEchantillonComponent } from './components/echantillon/update-echa
 import {PlanificationComponent} from "./components/planification/planification.component";
 
 
+
 const routes: Routes = [
   { path: 'addPatient', component: AddPatientComponent },
   { path: 'patient/all', component: AllPatientsComponent },
