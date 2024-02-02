@@ -16,7 +16,9 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class AllPatientsComponent implements OnInit {
   patients!: Patient[]
   searchForm!: FormGroup;
-
+  currentPage = 0;
+  pageSize = 4; 
+  patientsPages!: Patient[][];
   constructor(private patientService: PatientService, private fb: FormBuilder) {
   }
 
@@ -31,6 +33,7 @@ export class AllPatientsComponent implements OnInit {
     this.patientService.getAll().subscribe(
       (reponse: Patient[]) => {
         this.patients = reponse
+        this.patientsPages=this.paginatePatient(this.patients,this.pageSize)
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -59,6 +62,24 @@ export class AllPatientsComponent implements OnInit {
       }
     )
 
+  }
+  paginatePatient(patients: Patient[], pageSize: number): Patient[][] {
+    const pages = [];
+    for (let i = 0; i < patients.length; i += pageSize) {
+      pages.push(patients.slice(i, i + pageSize));
+    }
+    return pages;
+  }
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+    }
+  }
+  
+  nextPage() {
+    if (this.currentPage < this.patientsPages.length - 1) {
+      this.currentPage++;
+    }
   }
 
 

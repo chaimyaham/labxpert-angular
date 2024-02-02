@@ -14,7 +14,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let utilisateur of utilisateurs">
+              <!-- <tr *ngFor="let utilisateur of utilisateurs"> -->
+                <tr *ngFor="let utilisateur of utilisateursPages[currentPage]">
                 <td>{{ utilisateur.id }}</td>
                 <td>{{ utilisateur.nom }}</td>
                 <td>{{ utilisateur.prenom }}</td>
@@ -36,6 +37,14 @@
               </tr>
               </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+              <button (click)="previousPage()" [disabled]="currentPage === 0" class="btn btn-outline-primary mr-2">
+                <i class="fas fa-chevron-left"></i> 
+              </button>
+              <button (click)="nextPage()" [disabled]="currentPage === utilisateursPages.length - 1" class="btn btn-outline-primary">
+                 <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

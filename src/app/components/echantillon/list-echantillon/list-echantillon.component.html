@@ -20,7 +20,8 @@
           </thead>
           <tbody *ngIf="echantillons && echantillons.length > 0">
 
-            <tr *ngFor="let echantillion of echantillons">
+            <!-- <tr *ngFor="let echantillion of echantillons"> -->
+              <tr *ngFor="let echantillion of echantillonsPages[currentPage]">
               <td>{{ echantillion.id}}</td>
               <td>{{ echantillion.dateDeReception | date:'yyyy-MM-dd' }}</td>
               <td>{{ echantillion.echantillonCode }}</td>
@@ -48,6 +49,14 @@
 
           </tbody>
         </table>
+        <div class="d-flex justify-content-center">
+          <button (click)="previousPage()" [disabled]="currentPage === 0" class="btn btn-outline-primary mr-2">
+            <i class="fas fa-chevron-left"></i> 
+          </button>
+          <button (click)="nextPage()" [disabled]="currentPage === echantillonsPages.length - 1" class="btn btn-outline-primary">
+             <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
