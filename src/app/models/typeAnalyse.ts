@@ -1,6 +1,6 @@
 import { Test } from "./Test";
 
 export interface TypeAnalyse{
-    nomType: string;
+  nomTypeAnalyse: string;
     tests:Test[];
 }

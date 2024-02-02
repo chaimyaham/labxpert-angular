@@ -34,6 +34,7 @@ import {AllUtilisateurComponent} from "./components/utilitateur/all-utilisateur/
 import { UpdateUtilisateurComponent } from './components/utilitateur/update-utilisateur/update-utilisateur.component';
 import { PlanificationComponent } from './components/planification/planification.component';
 import { AddPlanificationComponent } from './components/planification/add-planification/add-planification.component';
+import { UpdateEchantillonComponent } from './components/echantillon/update-echantillon/update-echantillon.component';
 
 
 
@@ -63,7 +64,8 @@ import { AddPlanificationComponent } from './components/planification/add-planif
     AllUtilisateurComponent,
     UpdateUtilisateurComponent,
     PlanificationComponent,
-    AddPlanificationComponent
+    AddPlanificationComponent,
+    UpdateEchantillonComponent
 
   ],
 
