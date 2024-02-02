@@ -7,7 +7,7 @@ import {UtilisateurService} from "../../services/utilisateur.service";
 import {Planification} from "../../models/planification";
 import {AnalyseRequest} from "../../models/analyseRequest";
 import {AnalyseService} from "../../services/analyse.service";
-;
+
 
 @Component({
   selector: 'app-planification',
