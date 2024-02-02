@@ -8,6 +8,9 @@ import {PlanificationService} from "../../../services/planification.service";
 import {Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import EchantillonResponse from "../../../models/echantillonResponse";
+import {AnalyseService} from "../../../services/analyse.service";
+import {AnalyseRequest} from "../../../models/analyseRequest";
+import Analyse from "../../../models/analyse";
 
 @Component({
   selector: 'app-add-planification',
@@ -20,6 +23,7 @@ export class AddPlanificationComponent implements OnInit {
   //analyse : Analyse[]=[]
   planificationForm!: FormGroup
   errorMessage: string = '';
+  analyses:Analyse[]=[];
   constructor(
 
     private formBuilder: FormBuilder,
@@ -27,7 +31,8 @@ export class AddPlanificationComponent implements OnInit {
     private utilisateurService:UtilisateurService,
     private planificationService : PlanificationService,
     private router : Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private analyseService:AnalyseService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +47,14 @@ export class AddPlanificationComponent implements OnInit {
     this.echantillonService.getAllEchantillons().subscribe(
       data => {
         this.echantillons = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+    this.analyseService.getAllAnalyse().subscribe(
+      data => {
+        this.analyses = data;
       },
       error => {
         console.log(error);

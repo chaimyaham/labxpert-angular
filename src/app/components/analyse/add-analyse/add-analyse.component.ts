@@ -95,7 +95,8 @@ export class AddAnalyseComponent implements OnInit {
     }
     this.analyseRequest = {
       nomAnalyse: this.analyseForm.get('nomAnalyse')?.value,
-      typeAnalyseDRequestDtotos: this.typeAnalyses
+      typeAnalyseDRequestDtotos: this.typeAnalyses,
+
     }
 
     console.log(this.analyseRequest);
