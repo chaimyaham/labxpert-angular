@@ -8,7 +8,9 @@ import {Planification} from "../models/planification";
   providedIn: 'root'
 })
 export class PlanificationService {
-  url = "http://localhost:8088/api/v1/scheduling";
+
+  url = "http://localhost:8088/api/v1/";
+
   constructor(private http:HttpClient) { }
   getAllPlanifications(): Observable<Planification[]>{
     return this.http.get<Planification[]>(`${this.url}scheduling`);
