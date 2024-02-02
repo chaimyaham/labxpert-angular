@@ -74,6 +74,7 @@ export class AddPlanificationComponent implements OnInit {
       echantillonId:echantillonIdValue,
       analyseId:analyseIdValue
     };
+    console.log(modifiedFormData)
     this.planificationService.addPlanification(modifiedFormData).subscribe(
       (response) => {
         console.log("Données du planification envoyées avec succès", response);

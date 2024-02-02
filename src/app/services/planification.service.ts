@@ -9,7 +9,9 @@ import {Planification} from "../models/planification";
 })
 export class PlanificationService {
 
+
   url = "http://localhost:8088/api/v1/";
+
 
   constructor(private http:HttpClient) { }
   getAllPlanifications(): Observable<Planification[]>{
